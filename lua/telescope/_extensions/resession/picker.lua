@@ -28,8 +28,9 @@ function M.load_session(prompt_bufnr)
     local session = action_state.get_selected_entry()
     local encoded = utils.encode_session(session[1], opts)
     actions.close(prompt_bufnr)
-    vim.cmd("cd " .. vim.fn.getcwd())
-    nvim_tree.change_dir(vim.fn.getcwd())
+    -- vim.cmd("cd " .. opts.dir)
+    -- nvim_tree.change_dir(opts.dir)
+    print(encoded)
 
     require("resession").load(encoded, { dir = opts.dir })
 end
